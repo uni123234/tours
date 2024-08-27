@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{{ tour.title }}</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header>
+			<a class="navbar-brand" href="/">Моя подорож світом</a>
+		</header>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarNav"
+				aria-controls="navbarNav"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="nav-tabs ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Всі подорожі</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/my_tours">Мої подорожі</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/add_tour">Створити подорож</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container mt-4">
+			<div class="row">
+				<div class="col-md-4">
+					<img
+						src="{{ url_for('static', filename=tour.image) }}"
+						class="card-img-top"
+						alt="Зображення подорожі"
+					/>
+				</div>
+				<div class="col-md-8">
+					<h2>{{ tour.title }}</h2>
+					<p>{{ tour.description }}</p>
+
+					{% if booking_success %}
+					<div class="alert alert-success mt-3" role="alert">
+						Подорож успішно заброньовано!
+					</div>
+					{% endif %}
+
+					<form
+						method="POST"
+						action="{{ url_for('book_tour', tour_id=tour.id) }}"
+					>
+						<div class="form-group">
+							<label for="fullNameInput">ПІБ</label>
+							<input
+								type="text"
+								class="form-control"
+								id="fullNameInput"
+								name="fullname"
+								required
+							/>
+						</div>
+						<div class="form-group">
+							<label for="dateInput">Дата подорожі (YYYY-MM-DD)</label>
+							<input
+								type="text"
+								class="form-control"
+								id="dateInput"
+								name="date"
+								required
+							/>
+						</div>
+						<button type="submit" class="btn btn-primary">Забронювати</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<footer class="bg-light p-3 text-center mt-4">
+			<p>
+				&copy; 2024 Моя подорож світом. Натхнення. Планування. Подорожі.
+				Здійснюйте свої мрії разом з нами!
+			</p>
+		</footer>
+	</body>
+</html>

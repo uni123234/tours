@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Моя подорож світом - Створити подорож</title>
+		<link
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header>
+			<a class="navbar-brand" href="/">Моя подорож світом</a>
+		</header>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarNav"
+				aria-controls="navbarNav"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Всі подорожі</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/my_tours">Мої подорожі</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="/add_tour">Створити подорож</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container mt-4">
+			<h3 class="text-center">Сплануй свою нову пригоду</h3>
+
+			<form method="POST" action="/add_tour">
+				<div class="form-group">
+					<label for="titleInput">Назва подорожі</label>
+					<input
+						type="text"
+						class="form-control"
+						id="titleInput"
+						name="title"
+						required
+					/>
+				</div>
+				<div class="form-group">
+					<label for="descriptionInput">Опис подорожі</label>
+					<textarea
+						class="form-control"
+						id="descriptionInput"
+						name="description"
+						rows="3"
+						required
+					></textarea>
+				</div>
+				<div class="form-group">
+					<label for="imageInput">Шлях до фото</label>
+					<input
+						type="text"
+						class="form-control"
+						id="imageInput"
+						name="image"
+						required
+					/>
+				</div>
+				<button type="submit" class="btn btn-primary">Створити подорож</button>
+			</form>
+		</div>
+	</body>
+</html>

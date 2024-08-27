@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Моя подорож світом</title>
+		<link
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header>
+			<a class="navbar-brand" href="/">Моя подорож світом</a>
+		</header>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarNav"
+				aria-controls="navbarNav"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Всі подорожі</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="/my_tours">Мої подорожі</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/add_tour">Створити подорож</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container mt-4">
+			<h2 class="text-center">Мої заплановані пригоди</h2>
+
+			<div class="row">
+				{% for tour in tours %}
+				<div class="col-md-4 mb-4">
+					<div class="card">
+						<img
+							src="{{ url_for('static', filename=tour.image) }}"
+							class="card-img-top"
+							alt="Зображення подорожі"
+						/>
+						<div class="card-body">
+							<h5 class="card-title">{{ tour.title }}</h5>
+							<p class="card-text">{{ tour.description }}</p>
+							<a
+								href="{{ url_for('view_tour', tour_id=tour.id) }}"
+								class="btn btn-primary"
+								>Детальніше</a
+							>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<footer class="bg-light p-3 text-center mt-4">
+			<p>
+				&copy; 2024 Моя подорож світом. Натхнення. Планування. Подорожі.
+				Здійснюйте свої мрії разом з нами!
+			</p>
+		</footer>
+	</body>
+</html>
